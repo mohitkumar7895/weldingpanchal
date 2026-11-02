@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { query } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://weldingpanchal.com";
 
@@ -55,8 +57,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     return [...staticRoutes, ...workerRoutes, ...contractorRoutes, ...serviceRoutes, ...materialRoutes];
-  } catch (error) {
-    console.error("Error generating sitemap:", error);
+  } catch (error: any) {
+    // Graceful fallback if database is not reachable (e.g. during deployments or builds)
+    console.warn("Database unavailable for dynamic sitemap paths, returning static routes:", error?.message || error);
     return staticRoutes;
   }
 }
