@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F5F0E8;
+  --surface: #FFFFFF;
+  --espresso: #40352E;
+  --mocha: #806B59;
+  --sandstone: #D8D0C5;
+  --ivory: #F5F0E8;
+  --bronze: #A98559;
+  --text-primary: #292522;
+  --text-secondary: #77716E;
+  --border: #D8D0C5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5F0E8;
+  color: #292522;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #806B59;
+  color: #FFFFFF;
+}
+
+/* Custom refined scrollbar in Sandstone & Mocha */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D0C5;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #806B59;
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-[#806B59] focus:ring-offset-2;
+  }
+}
+
+/* Luxury card hover subtle lift */
+.card-luxury {
+  background-color: #FFFFFF;
+  border: 1px solid #D8D0C5;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  border-color: #806B59;
+  box-shadow: 0 16px 36px -6px rgba(64, 53, 46, 0.12), 0 6px 12px -2px rgba(64, 53, 46, 0.05);
+  transform: translateY(-4px);
+}
